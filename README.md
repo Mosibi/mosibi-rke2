@@ -18,17 +18,17 @@ The cluster installation is executed using the Ansible code from [Rancher Federa
 # Extra info
 The Cilium configuration can be modified in rke2-ansible/manifests/cilium.yaml. In rke2-ansible/inventory/my-cluster/group_vars the RKE2 configuration can be altered.
 
-As root, execute the following commands on the master to include the Rancher binary location in your path and kubectl command completion working
+As root, execute the following commands on the master to include the Rancher binary location in your PATH and get kubectl command completion working
 
 ```lang=shell
-ln -s /etc/rancher/rke2/rke2.yaml /root/kube/config
-chmod 600 /root/.kube/config
+ln -s /etc/rancher/rke2/rke2.yaml ${HOME}/kube/config
+chmod 600 ${HOME}/.kube/config
 ln -s /var/lib/rancher/rke2/agent/etc/crictl.yaml /etc/crictl.yaml
 
 export PATH="${PATH}:/var/lib/rancher/rke2/data/v1.22.5-rke2r2-d78a20b2bba9/bin"
 kubectl completion bash > ~/.kube/completion.bash.inc
 source <(kubectl completion bash)
 
-echo 'export PATH=${PATH}:/var/lib/rancher/rke2/data/v1.22.5-rke2r2-d78a20b2bba9/bin' >> /root/.bashrc
-echo 'source /root/.kube/completion.bash.inc'
+echo 'export PATH=${PATH}:/var/lib/rancher/rke2/data/v1.22.5-rke2r2-d78a20b2bba9/bin' >> ${HOME}/.bashrc
+echo 'source ${HOME}/.kube/completion.bash.inc'
 ```
