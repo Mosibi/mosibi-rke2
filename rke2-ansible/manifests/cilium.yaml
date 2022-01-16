@@ -1,0 +1,54 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: rke2-cilium
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    cilium:
+      eni:
+        enabled: true
+
+
+
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: rke2-cilium
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    cilium:
+      debug:
+        enabled: true
+      kubeProxyReplacement: "strict"
+      operator:
+        replicas: 1
+      encryption:
+        enabled: false
+        type: wireguard
+      l7Proxy: false
+      hubble:
+        enabled: true
+        metrics:
+          enabled:
+            - dns
+            - drop
+            - tcp
+            - flow
+            - port-distribution
+            - icmp
+            - http
+        relay:
+          enabled: true
+        ui:
+          enabled: true
+          replicas: 1
+      prometheus:
+        enabled: true
+        # Default port value (9090) needs to be changed since the RHEL cockpit also listens on this port.
+        port: 19090
+        # Configure this serviceMonitor section AFTER Rancher Monitoring is enabled!
+        #serviceMonitor:
+        #  enabled: true
+        #

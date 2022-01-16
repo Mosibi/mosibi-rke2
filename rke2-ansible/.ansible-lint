@@ -1,0 +1,6 @@
+exclude_paths:
+- .github/
+- molecule/
+- .ansible-lint
+warn_list:
+  - no-handler
