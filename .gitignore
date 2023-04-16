@@ -2,3 +2,4 @@
 .terraform.lock.hcl
 terraform.tfstate
 terraform.tfstate.backup
+rke2-ansible/inventory/my-cluster/hosts.ini

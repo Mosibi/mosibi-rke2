@@ -12,7 +12,7 @@ provider "libvirt" {
 
 variable "installation_image" {
   type = string
-  default = "https://cloud.centos.org/centos/8/x86_64/images/CentOS-8-GenericCloud-8.2.2004-20200611.2.x86_64.qcow2"
+  default = "~/meuk/Rocky-8-GenericCloud-Base.latest.x86_64.qcow2"
 }
 
 variable "domain" {
