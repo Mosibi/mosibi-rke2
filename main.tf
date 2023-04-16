@@ -12,7 +12,7 @@ provider "libvirt" {
 
 variable "installation_image" {
   type = string
-  default = "~/meuk/Rocky-8-GenericCloud-Base.latest.x86_64.qcow2"
+  default = "/home/richard/meuk/Rocky-8-GenericCloud-Base.latest.x86_64.qcow2"
 }
 
 variable "domain" {

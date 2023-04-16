@@ -1,0 +1,27 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: rke2-cilium
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    hostFirewall:
+      enabled: true
+    externalIPs:
+      enabled: true
+    hostPort:
+      enabled: true
+    nodeinit:
+      enabled: true
+    nodePort:
+      enabled: true
+    operator:
+      replicas: 1
+    hubble:
+      enabled: true
+      listenAddress: ":4244"
+      relay:
+        enabled: true
+      ui:
+        enabled: true
