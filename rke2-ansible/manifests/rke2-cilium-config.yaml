@@ -6,6 +6,11 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
+    kubeProxyReplacement: strict
+    bpf:
+      masquerade: true
+#   gatewayAPI:
+#     enabled: true
     hostFirewall:
       enabled: true
     externalIPs:
