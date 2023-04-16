@@ -21,14 +21,15 @@ The Cilium configuration can be modified in rke2-ansible/manifests/cilium.yaml. 
 As root, execute the following commands on the master to include the Rancher binary location in your PATH and get kubectl command completion working
 
 ```lang=shell
-ln -s /etc/rancher/rke2/rke2.yaml ${HOME}/kube/config
+ln -s /etc/rancher/rke2/rke2.yaml ${HOME}/.kube/config
 chmod 600 ${HOME}/.kube/config
 ln -s /var/lib/rancher/rke2/agent/etc/crictl.yaml /etc/crictl.yaml
 
-export PATH="${PATH}:/var/lib/rancher/rke2/data/v1.22.5-rke2r2-d78a20b2bba9/bin"
+RANCHER_BINDIR=$(echo /var/lib/rancher/rke2/data/*/bin)
+export PATH="${PATH}:${RANCHER_BINDIR}"
 kubectl completion bash > ~/.kube/completion.bash.inc
 source <(kubectl completion bash)
 
-echo 'export PATH=${PATH}:/var/lib/rancher/rke2/data/v1.22.5-rke2r2-d78a20b2bba9/bin' >> ${HOME}/.bashrc
-echo 'source ${HOME}/.kube/completion.bash.inc'
+echo "export PATH=${PATH}" >> ${HOME}/.bashrc
+echo 'source ${HOME}/.kube/completion.bash.inc' >> ${HOME}/.bashrc
 ```
