@@ -11,6 +11,7 @@ rke2_config:
   disable:
   - rke2-canal
   - rke2-kube-proxy
+  - rke2-ingress-nginx
   profile: cis-1.6
   kube-controller-manager-arg:
   - "tls-min-version=VersionTLS12"
