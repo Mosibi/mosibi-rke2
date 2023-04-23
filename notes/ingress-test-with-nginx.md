@@ -32,3 +32,10 @@ Test the ingress rule with the following commands
 NGINX_SVC_IP=$(kubectl get svc nginx -o=jsonpath='{.spec.clusterIP}')
 curl -H 'Host: web.example.com' http://${NGINX_SVC_IP} -vvvL
 ```
+
+Connecting via the loadbalancer ip address that was given by MetalLB to the Traefik Ingress controller, should also work
+
+```lang=shell
+LOADBALANCER_IP=$(kubectl -n traefik get svc traefik -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
+curl -H 'Host: web.example.com' http://${LOADBALANCER_IP} -vvvL
+```
