@@ -36,3 +36,5 @@ source <(kubectl completion bash)
 echo "export PATH=${PATH}" >> ${HOME}/.bashrc
 echo 'source ${HOME}/.kube/completion.bash.inc' >> ${HOME}/.bashrc
 ```
+
+I placed several notes in the [notes](notes) directory, with information about different topics like ingress or Cilium binaries.
