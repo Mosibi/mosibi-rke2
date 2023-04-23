@@ -1,0 +1,22 @@
+---
+- name: debug 1
+  debug:
+    msg: "{{ hostvars['rke2-master1']['ansible_default_ipv4']['address'] }}"
+  run_once: true
+  delegate_to: localhost
+
+- name: debug 2
+  debug:
+    msg: "{{ playbook_dir }}"
+
+- name: Configure RKE2 Cilium configuration
+  ansible.builtin.template:
+    src: rke2-cilium-config.yaml.j2
+    dest: "{{ playbook_dir }}/../rke2-ansible/manifests/rke2-cilium-config.yaml"
+    mode: '0644'
+  vars:
+    kube_api_server_ip: "{{ hostvars['rke2-master1']['ansible_default_ipv4']['address'] }}"
+    kube_api_server_port: 6443
+  become: false
+  run_once: true
+  delegate_to: localhost

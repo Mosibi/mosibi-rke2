@@ -1,0 +1,7 @@
+---
+- name: Upgrade to newer kernel
+  include_tasks: upgrade_kernel.yml
+  when:
+    - ansible_kernel is version_compare('5','<')
+  tags:
+    - upgrade-kernel

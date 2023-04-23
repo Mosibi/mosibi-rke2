@@ -10,6 +10,9 @@ The cluster installation is executed using the Ansible code from [Rancher Federa
   * `terraform apply`
 * Generate inventory file
   * `sudo ./generate_inventory.sh > rke2-ansible/inventory/my-cluster/hosts.ini`
+* Prepare the nodes for RKE2 installation
+  * `cd prepare-nodes`
+  * `ansible-playbook -i ../rke2-ansible/inventory/my-cluster/hosts.ini playbook.yml`
 * Install cluster
   * `cd rke2-ansible`
   * `ansible-galaxy collection install -r requirements.yml`
